@@ -1,6 +1,6 @@
 stackbitVersion: ~0.3.0
 ssgName: nextjs
-ssgVersion: 9.4.4
+ssgVersion: null
 buildCommand: npm run build
 publishDir: out
 staticDir: public
@@ -11,6 +11,8 @@ pageLayoutKey: layout
 logicFields:
   - blog_feed_section.recent_count
   - hero_section.background.background_image_opacity
+cmsName: sanity
+nodeVersion: '12'
 models:
   config:
     type: data
@@ -177,7 +179,8 @@ models:
     type: page
     label: Page
     layout: page
-    exclude: blog/**/*
+    exclude:
+      - blog/**/*
     fields:
       - type: string
         name: title
@@ -188,6 +191,7 @@ models:
         name: seo
         models:
           - stackbit_page_meta
+        label: Seo
   post:
     type: page
     urlPath: '/blog/{slug}'
@@ -245,6 +249,7 @@ models:
         name: seo
         models:
           - stackbit_page_meta
+        label: Seo
   advanced:
     type: page
     label: Advanced Page
@@ -274,6 +279,7 @@ models:
         name: seo
         models:
           - stackbit_page_meta
+        label: Seo
   blog_feed_section:
     type: object
     label: Blog Feed Section
@@ -595,11 +601,15 @@ models:
             - type: string
               name: name
               default: ''
+              label: Name
             - type: string
               name: value
               default: ''
+              label: Value
             - type: string
               name: keyName
               default: name
+              label: Key Name
             - type: boolean
               name: relativeUrl
+              label: Relative Url
